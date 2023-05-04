@@ -17,27 +17,26 @@ The Bing AI Plugin enables Auto-GPT to use Bing AI to research information, ask 
 - You must be logged in to an account with Bing AI access.
 - Click "Export" on the bottom right, then "Export as JSON" (This saves your cookies to clipboard)
 - Paste your cookies into a file `cookies.json`
+- IMPORTANT: Move the `cookies.json` file into the Auto-GPT folder.
 
 ## Installation
 
-Follow these steps to configure the Auto-GPT Email Plugin:
+Follow these steps to configure the AutoGPT Bing AI Plugin:
 
-### 1. Follow Auto-GPT-Plugins Installation Instructions
-Follow the instructions as per the [Auto-GPT-Plugins/README.md](https://github.com/Significant-Gravitas/Auto-GPT-Plugins/blob/master/README.md)
+### 1. Clone this Repository
+cd into a folder that you can find easily. For example: `cd desktop`. 
+Then, paste this command: `git clone https://github.com/gravelBridge/AutoGPTBingAI.git`
 
-### 2. Locate the `.env.template` file
-Find the file named `.env.template` in the main `/Auto-GPT` folder.
+### 2. Navigate to the folder
+Navigate to the folder where you ran the cd command
 
-### 3. Create and rename a copy of the file
-Duplicate the `.env.template` file and rename the copy to `.env` inside the `/Auto-GPT` folder.
+### 3. Zip the BingAI folder
+On MacOS, right click the BingAI folder and press `Compress`. On windows, right click the folder, and press `Send to > Compressed (zipped)`.
 
-### 4. Edit the `.env` file
-Open the `.env` file in a text editor. Note: Files starting with a dot might be hidden by your operating system.
+### 4. Move the zip file
+Move the new BingAI.zip file to the AutoGPT plugins directory, there should already be a file there titled `__PUT_PLUGIN_ZIPS_HERE__`.
 
-### 5. Edit goals
-When using Auto-GPT please set one of the goals to "Use ask_bing_genius whenever possible".
-
-### 6. Add email configuration settings
+### 6. Add BingAI configuration settings
 Append the following configuration settings to the end of the file:
 
 ```ini
@@ -45,8 +44,12 @@ Append the following configuration settings to the end of the file:
 ### BINGAI
 ################################################################################
 
-BINGAI_COOKIES_PATH=
+BINGAI_COOKIES_PATH=./cookies.json
 ```
 
 ## AutoGPT Configuration
 Set `ALLOWLISTED_PLUGINS=BingAI,example-plugin1,example-plugin2,etc` in your AutoGPT `.env` file.
+
+
+### 7. Edit goals
+When using Auto-GPT please set one of the goals to "Use ask_bing_genius whenever possible".
