@@ -37,7 +37,7 @@ On MacOS, right click the BingAI folder and press `Compress`. On windows, right 
 Move the new BingAI.zip file to the AutoGPT plugins directory, there should already be a file there titled `__PUT_PLUGIN_ZIPS_HERE__`.
 
 ### 6. Add BingAI configuration settings
-Append the following configuration settings to the end of the file:
+Append the following configuration settings to the end of the .env file:
 
 ```ini
 ################################################################################
