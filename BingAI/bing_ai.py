@@ -50,6 +50,10 @@ async def getResponse(question: str) -> Optional[str]:
     Returns:
         Optional[str]: The response text from BingAI, or the error message in case of errors.
     """
+
+    if len(question) > 2000:
+        return "Your question is too long, please make it less than 2000 characters."
+    
     try:
         if bingai_mode == "precise":
             response = await bot.ask(prompt=question, conversation_style=ConversationStyle.precise, wss_link="wss://sydney.bing.com/sydney/ChatHub")
