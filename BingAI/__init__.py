@@ -21,6 +21,7 @@ class BingAI(AutoGPTPluginTemplate):
         self._version = "0.1.0"
         self._description = "This is an Auto-GPT plugin to allow Auto-GPT to use Bing AI."
         self.cookies_path = os.getenv("BINGAI_COOKIES_PATH")
+        self.bing_mode = os.getenv("BINGAI_MODE")
 
 
     def can_handle_on_response(self) -> bool:
@@ -75,14 +76,14 @@ class BingAI(AutoGPTPluginTemplate):
             loop = asyncio.get_event_loop()
             return loop.run_until_complete(getResponse(question))
 
-        if self.cookies_path is not None:
+        if self.cookies_path is not None and self.bing_mode is not None:
             prompt.add_resource("Access to a highly intelligent AI based on GPT-4, to be used whenever single questions or advice is needed. This AI is able to research information online by itself. This can be accessed via the ask_genius_bing command.")
             prompt.add_command(
                 "ask_genius_bing", "Ask Bing AI", {"question":"<question>"}, sync_get_response
             )
 
         else:
-            print("BingAI plugin not loaded because the cookies path has not been set.")
+            print("BingAI plugin not loaded because the cookies path has not been set or the BingAI mode has not been set.")
 
         return prompt
         

@@ -45,7 +45,9 @@ Append the following configuration settings to the end of the .env file:
 ################################################################################
 
 BINGAI_COOKIES_PATH=./cookies.json
+BINGAI_MODE=<your chosen mode>
 ```
+For the `BINGAI_MODE`, use either precise, balanced, or creative.
 
 ## AutoGPT Configuration
 Set `ALLOWLISTED_PLUGINS=BingAI,example-plugin1,example-plugin2,etc` in your AutoGPT `.env` file.

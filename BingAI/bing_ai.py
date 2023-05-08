@@ -24,6 +24,11 @@ def load_cookies(cookie_path: str) -> Optional[Dict]:
     return cookies
 
 cookie_path = os.getenv("BINGAI_COOKIES_PATH")
+bingai_mode = os.getenv("BINGAI_MODE").lower()
+
+valid_modes = ["precise", "balanced", "creative"]
+if bingai_mode not in valid_modes:
+    print(bingai_mode + " is not a valid mode. The valid modes are precise, balanced, or creative.")
 cookies = load_cookies(cookie_path)
 if cookies:
     bot = Chatbot(cookie_path=cookie_path)
@@ -46,7 +51,12 @@ async def getResponse(question: str) -> Optional[str]:
         Optional[str]: The response text from BingAI, or the error message in case of errors.
     """
     try:
-        response = await bot.ask(prompt=question, conversation_style=ConversationStyle.precise, wss_link="wss://sydney.bing.com/sydney/ChatHub")
+        if bingai_mode == "precise":
+            response = await bot.ask(prompt=question, conversation_style=ConversationStyle.precise, wss_link="wss://sydney.bing.com/sydney/ChatHub")
+        elif bingai_mode == "balanced":
+            response = await bot.ask(prompt=question, conversation_style=ConversationStyle.balanced, wss_link="wss://sydney.bing.com/sydney/ChatHub")
+        else:
+            response = await bot.ask(prompt=question, conversation_style=ConversationStyle.creative, wss_link="wss://sydney.bing.com/sydney/ChatHub")
         response_text = response['item']['messages'][1]['text']
 
     except Exception as e:
