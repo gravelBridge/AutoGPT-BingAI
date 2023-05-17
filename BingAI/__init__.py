@@ -3,6 +3,8 @@ from typing import Any, Dict, List, Optional, Tuple, TypeVar, TypedDict
 import os
 from auto_gpt_plugin_template import AutoGPTPluginTemplate
 import asyncio
+import nest_asyncio
+nest_asyncio.apply()
 
 PromptGenerator = TypeVar("PromptGenerator")
 
