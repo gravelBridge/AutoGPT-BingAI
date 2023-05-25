@@ -31,7 +31,7 @@ if bingai_mode not in valid_modes:
     print(bingai_mode + " is not a valid mode. The valid modes are precise, balanced, or creative.")
 cookies = load_cookies(cookie_path)
 if cookies:
-    bot = Chatbot(cookie_path=cookie_path)
+    bot = Chatbot(cookies=cookies)
 else:
     print("Failed to initialize Chatbot. Exiting.")
     exit()
